@@ -1,0 +1,29 @@
+{% extends "blog\includes\base.html" %}
+
+{% block article %}
+<div class="container article float">
+
+    <h1>{{ article.title }}</h1>
+
+    <p class=" text-left">
+        <i class="icon iconfont iconrili"></i>
+        <small class="text-muted">发表于：{{ article.created_time|date:"Y-m-d" }}</small>
+        <small>|</small>
+        <i class="icon iconfont iconguidang"></i>
+        <a style="color: black;" href="/category/{{ article.category }}"><small
+                class="text-muted">{{ article.category }}</small></a>
+        <small>|</small>
+        <i class="icon iconfont iconbiaoqian"></i>
+        {% for tag in article.tags %}
+        <a style="color: black;" href="/tag/{{ tag }}"><small class="text-muted">{{ tag.name }}</small></a>
+        {% endfor %}
+        <small>|</small>
+        <i class="icon iconfont iconview"></i>
+        <small class="text-muted">阅读量：{{ article.views }}</small>
+    </p>
+
+    <p class="lead text-muted">{{ article.abstract|safe }}</p>
+    <div class="divider"> </div>
+    <p class="text-justify">{{ article.content|safe }}</p>
+</div>
+{% endblock article %}

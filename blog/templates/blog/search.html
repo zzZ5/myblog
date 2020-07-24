@@ -1,0 +1,40 @@
+{% extends "blog\includes\base.html" %}
+{% block search %}
+<div class="row" style="margin-top: 20px;">
+    <form class="d-flex align-center" action="\search\" method="get">
+        <div class="col-lg-3 col-md-2 col-1"></div>
+        <div class="col-lg-4 col-md-6 col-7">
+            <input class="form-control mr-2" name="q" type="search" placeholder="Search" value="{{ q }}"
+                aria-label="Search">
+        </div>
+        <div class="col-lg-2 col-md-2 col-3">
+            <button class="btn btn-light" type="submit">Search</button>
+        </div>
+        <div class="col-lg-3 col-md-2 col-1"></div>
+    </form>
+</div>
+{% endblock search %}
+{% block article_list %}
+{% include "blog\includes\article_list.html" %}
+{% endblock article_list%}
+{% block pagination %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item{% if not page_info.has_previous %} disabled {% endif %}">
+            <a class=" page-link" href="?q={{ q }}&page={{ page_info.current|add:-1 }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% for page in page_info.pages %}
+        <li class="page-item {% if page == page_info.current %}active{% endif %}"><a class="page-link"
+                href="?q={{ q }}&page={{ page }}">{{page}}</a>
+        </li>
+        {% endfor %}
+        <li class="page-item {% if not page_info.has_next %} disabled {% endif %}">
+            <a class="page-link" href="?q={{ q }}&page={{ page_info.current|add:1 }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+{% endblock pagination %}

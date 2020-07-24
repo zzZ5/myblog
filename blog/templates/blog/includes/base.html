@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-Hans">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1952675_2j4d1h8ct72.css">
+</head>
+
+<body>
+
+    {% block header %}
+    <div id='header' class="container-fluid">
+        <div class="container">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <div class=" container-fluid">
+                    <a class="navbar-brand" href="/">MyBlog</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                            {% for category in categories %}
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page"
+                                    href="{{ category_link }}{{ category.name }}">{{ category.name }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <form class="d-flex" action="\search\" method="get">
+                            <input class="form-control mr-2" name="q" type="search" placeholder="Search"
+                                aria-label="Search">
+                            <button class="btn btn-light" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    {% endblock header %}
+
+    <div class="container">
+
+        {% block banner %}{% endblock banner %}
+
+        {% block search %}{% endblock search %}
+
+        <div class="row">
+
+            <div class="col-md-9 leftside">
+                {% block article_list %}{% endblock article_list %}
+                {% block pagination %}{% endblock pagination %}
+                {% block article %}{% endblock article %}
+            </div>
+
+
+            <div class="col-md-3 rightside">
+                {% block tag_list %}{% include "blog\includes\tag_list.html" %}{% endblock tag_list %}
+                {% block hot_articles %}{% include "blog\includes\hot_articles.html" %}{% endblock hot_articles %}
+            </div>
+
+        </div>
+    </div>
+
+    {% block footer %}
+    <footer class="blog-footer">
+        <p>Blog template built for Study by <a class="text-decoration-none" href="https://zzz5.xyz/">@zzZ5</a>.</p>
+        <p>
+            <a class="text-decoration-none" href="#">Back to top</a>
+        </p>
+    </footer>
+    {% endblock footer %}
+
+    <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

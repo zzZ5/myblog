@@ -1,0 +1,33 @@
+{% for article in articles %}
+<div class="card mb-3 w-100 float">
+    <div class="row g-0">
+        <div class="col-md-5">
+            <a href="{{ article_link }}{{ article.id }}"><img class="w-100" src="{{ article.cover.url }}" alt="..."></a>
+        </div>
+        <div class="col-md-7">
+            <div class="card-body">
+                <a class="text-decoration-none" href="{{ article_link }}{{ article.id }}" style="color: black;">
+                    <h4 class="card-title">{{ article.title }} </h4>
+                </a>
+                <p class="card-text">
+                    <i class="icon iconfont iconrili"></i>
+                    <small class="text-muted">{{ article.created_time|date:"Y-m-d" }}</small>
+                    <small>|</small>
+                    <i class="icon iconfont iconguidang"></i>
+                    <a style="color: black;" href="/category/{{ article.category }}"><small
+                            class="text-muted">{{ article.category }}</small></a>
+                    <small>|</small>
+                    <i class="icon iconfont iconbiaoqian"></i>
+                    {% for tag in article.tags %}
+                    <a style="color: black;" href="{{ tag_link }}{{ tag.name }}"><small
+                            class="text-muted">{{ tag.name }}</small></a>
+                    {% endfor %}
+                </p>
+                <p class="card-text"
+                    style="display: -webkit-box;  overflow: hidden;  -webkit-line-clamp: 4;  -webkit-box-orient: vertical;">
+                    {{ article.abstract }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
