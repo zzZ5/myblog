@@ -77,13 +77,23 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', 'NAME': 'blog',  #   你的数据库名称
-        'USER': 'zzZ5',  #   你的数据库用户名
-        'PASSWORD': 'L05b03j__',  #   你的数据库密码
-        'HOST': 'cdb-jh4avzxk.cd.tencentcdb.com',  #   你的数据库主机，留空默认为localhost
-        'PORT': '10059',  #   你的数据库端口
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
+
+
+# mysql数据库
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': '',  #   你的数据库名称
+#         'USER': '',  #   你的数据库用户名
+#         'PASSWORD': '',  #   你的数据库密码
+#         'HOST': '',  #   你的数据库主机，留空默认为localhost
+#         'PORT': '',  #   你的数据库端口
+#     }
+# }
 
 
 # Password validation
