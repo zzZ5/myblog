@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'ckeditor',
+    'ckeditor_uploader',
     'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -139,3 +140,30 @@ STATICFILES_DIRS = (
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CKEDITOR_UPLOAD_PATH = ''
+
+# ckeditor
+CKEDITOR_CONFIGS = {
+    # 配置名是default时，django-ckeditor默认使用这个配置
+    'default': {
+        # 使用简体中文
+        'language': 'zh-cn',
+        # 编辑器的宽高请根据你的页面自行设置
+        # 'width': '730px',
+        'height': '350px',
+        'image_previewText': ' ',
+        # 'tabSpaces': 4,
+        # 'toolbar': 'full',  # 完整工具条
+        'toolbar': 'custom',  # 常用工具条
+        # 添加按钮在这里
+        # 'toolbar_Custom': [
+        #     ['Bold', 'Italic', 'Underline', 'Format', 'RemoveFormat'],
+        #     ['NumberedList', 'BulletedList'],
+        #     ['Blockquote', 'CodeSnippet'],
+        #     ['Image', 'Link', 'Unlink'],
+        #     ['Maximize']
+        # ],
+        # 插件
+        'extraPlugins': ','.join(['codesnippet', 'uploadimage', 'widget', 'lineutils', ]),
+    }
+}

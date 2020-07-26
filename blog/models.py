@@ -1,5 +1,5 @@
 from django.db import models
-from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Category(models.Model):
@@ -35,7 +35,7 @@ class Article(models.Model):
     """文章表"""
 
     title = models.CharField(max_length=128)
-    content = RichTextField(blank=True, null=True)
+    content = RichTextUploadingField(blank=True, null=True)
     abstract = models.TextField(max_length=500, blank=True, null=True)
     cover = models.ImageField(upload_to='article_cover/%Y/%m/%d/',
                               verbose_name='文章封面', blank=True, null=True)
