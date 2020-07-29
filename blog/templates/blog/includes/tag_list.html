@@ -2,7 +2,7 @@
     <i class="icon iconfont iconbiaoqian">标签</i>
     <div class="card-tag-cloud">
         {% for tag in tags %}
-        <a href="{{ tag_link }}{{ tag.name }}" style="font-size: {{ 15|add:forloop.counter0 }}">{{ tag.name }}</a>
+        <a href="{% url 'blog:tags' tag.name %}" style="font-size: {{ 15|add:forloop.counter0 }}">{{ tag.name }}</a>
         {% endfor %}
     </div>
 </div>

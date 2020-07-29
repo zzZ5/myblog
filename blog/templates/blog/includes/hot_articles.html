@@ -4,12 +4,13 @@
     <div class="card mb-1 w-100">
         <div class="row g-0">
             <div class="col-4">
-                <a href="{{ article_link }}{{ hot_article.id }}"><img class="w-100" src="{{ hot_article.cover.url }}"
+                <a href="{% url 'blog:articles' hot_article.id %}"><img class="w-100" src="{{ hot_article.cover.url }}"
                         alt="..."></a>
             </div>
             <div class="col-8">
                 <div class="card-body">
-                    <a class="text-decoration-none" href="{{ article_link }}{{ hot_article.id }}" style="color: black;">
+                    <a class="text-decoration-none" href="{% url 'blog:articles' hot_article.id %}"
+                        style="color: black;">
                         <p class="card-text" style="display: -webkit-box; overflow: hidden; -webkit-line-clamp: 1;
                     -webkit-box-orient: vertical; font-size: x-small;">{{ hot_article.title }}</p>
                     </a>

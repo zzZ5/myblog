@@ -10,12 +10,13 @@
         <small class="text-muted">发表于：{{ article.created_time|date:"Y-m-d" }}</small>
         <small>|</small>
         <i class="icon iconfont iconguidang"></i>
-        <a style="color: black;" href="/category/{{ article.category }}"><small
+        <a style="color: black;" href="{% url 'blog:categories' article.category %}"><small
                 class="text-muted">{{ article.category }}</small></a>
         <small>|</small>
         <i class="icon iconfont iconbiaoqian"></i>
         {% for tag in article.tags %}
-        <a style="color: black;" href="/tag/{{ tag }}"><small class="text-muted">{{ tag.name }}</small></a>
+        <a style=" color: black;" href="{% url 'blog:tags' tag.name %}"><small
+                class="text-muted">{{ tag.name }}</small></a>
         {% endfor %}
         <small>|</small>
         <i class="icon iconfont iconview"></i>
